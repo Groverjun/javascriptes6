@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let s1 = Symbol('foo');
+			let s2 = Symbol('bar');
+			
+			console.log(s1) // Symbol(foo)
+			console.log(s2) // Symbol(bar)			
+			console.log(s1.toString()) // "Symbol(foo)"
+			console.log(s2.toString()) // "Symbol(bar)"
+						
+			const obj = {
+			  toString() {
+			    return 'abc';
+			  }
+			};
+			const sym = Symbol(obj);
+			console.log(sym) // Symbol(abc)
+			
+			//symbol类型的值不能与其他类型的值进行运算
+			let sym = Symbol('My symbol');
+
+			"your symbol is " + sym
+			// TypeError: can't convert symbol to string
+			`your symbol is ${sym}`
+			// TypeError: can't convert symbol to string
+			
+			//但是symbol的值可以转换为字符串
+			var sym = Symbol('My symbol');
+			String(sym) // 'Symbol(My symbol)'
+			sym.toString() // 'Symbol(My symbol)'
+			
+			//另外，Symbol 值也可以转为布尔值，但是不能转为数值。
+			var sym = Symbol();
+			Boolean(sym) // true
+			!sym  // false
+			
+			if (sym) {
+			  // ...
+			}
+			
+			Number(sym) // TypeError
+			sym + 2 // TypeError
+		</script>
+	</body>
+</html>

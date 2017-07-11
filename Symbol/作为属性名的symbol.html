@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let mySymbol = Symbol();
+
+			// 第一种写法
+			var  a = {};
+			a[mySymbol] = 'Hello!';
+			
+			// 第二种写法
+			var a = {
+			  [mySymbol]: 'Hello!'
+			};
+			
+			// 第三种写法
+			var a = {};
+			Object.defineProperty(a, mySymbol, { value: 'Hello!' });
+			
+			// 以上写法都得到同样结果
+			a[mySymbol] // "Hello!"
+			
+			//Symbol 值作为对象属性名时，不能用点运算符。
+			let b=Symbol();
+			let c={};
+			c.b='你好';
+			console.log(c.b)//你好
+			console.log(c[b])//undefind
+			console.log(c['b'])//你好
+			//在对象的内部，使用 Symbol 值定义属性时，Symbol 值必须放在方括号之中。
+			let s = Symbol();
+
+			let obj = {
+			  [s](arg) { alert(arg) }
+			};			
+			obj[s](111)
+		</script>
+	</body>
+</html>
