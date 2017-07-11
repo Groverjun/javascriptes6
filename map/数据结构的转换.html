@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//（1）Map 转为数组
+			const myMap = new Map()
+			  .set(true, 7)
+			  .set({foo: 3}, ['abc']);
+			[...myMap]
+			// [ [ true, 7 ], [ { foo: 3 }, [ 'abc' ] ] ]
+			//（2）数组 转为 Map
+			new Map([
+			  [true, 7],
+			  [{foo: 3}, ['abc']]
+			])
+			// Map {
+			//   true => 7,
+			//   Object {foo: 3} => ['abc']
+			// }
+			
+			//（3）Map 转为对象
+			function strMapToObj(strMap) {
+			  let obj = Object.create(null);
+			  for (let [k,v] of strMap) {
+			    obj[k] = v;
+			  }
+			  return obj;
+			}
+			
+			const myMap= new Map()
+			  .set('yes', true)
+			  .set('no', false);
+			strMapToObj(myMap)
+			// { yes: true, no: false }
+			
+			
+//			（4）对象转为 Map
+			function objToStrMap(obj) {
+			  let strMap = new Map();
+			  for (let k of Object.keys(obj)) {
+			    strMap.set(k, obj[k]);
+			  }
+			  return strMap;
+			}
+			
+			objToStrMap({yes: true, no: false})
+			// Map {"yes" => true, "no" => false}
+		</script>
+	</body>
+</html>

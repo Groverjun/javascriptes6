@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			keys()：返回键名的遍历器
+//			values()：返回键值的遍历器
+//			entries()：返回键值对的遍历器
+//			forEach()：使用回调函数遍历每个成员
+			let set = new Set(['red', 'green', 'blue']);
+			for (let item of set.keys()) {
+			  console.log(item);
+			}
+			// red
+			// green
+			// blue
+			
+			for (let item of set.values()) {
+			  console.log(item);
+			}
+			// red
+			// green
+			// blue
+			//keys方法、values方法、entries方法返回的都是遍历器对象
+			
+			for (let item of set.entries()) {
+			  console.log(item);
+			}
+			// ["red", "red"]
+			// ["green", "green"]
+			// ["blue", "blue"]
+			//entries方法返回的遍历器，同时包括键名和键值，所以每次输出一个数组，它的两个成员完全相等。
+		</script>
+	</body>
+</html>
